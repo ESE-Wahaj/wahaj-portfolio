@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     "Flutter Developer",
     "React",
     "Next.js",
-    "Dart",
     "Pakistan",
   ],
   authors: [{ name: "M. Wahaj Naveed" }],
