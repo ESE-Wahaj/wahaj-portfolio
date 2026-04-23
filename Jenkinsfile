@@ -1,59 +1,32 @@
-// Jenkinsfile — Declarative CI/CD Pipeline
-pipeline {
-  agent any
- 
-  environment {
-    APP_DIR = '/var/www/nextjs-app'
-    REPO_URL = 'https://github.com/ESE-Wahaj/wahaj-portfolio.git'
-  }
- 
-  stages {
- 
-    stage('Checkout') {
-      steps {
-        git branch: 'master',
-            url: "${REPO_URL}"
-      }
+node {
+    def appDir = '/var/www/nextjs-app'
+
+    stage('Clean Workspace'){
+        echo 'Cleaning Jenkins Workspace'
+        deleteDir()
     }
- 
-    stage('Install Dependencies') {
-      steps {
-        sh 'npm install'
-      }
+
+    stage('Clone Repo'){
+        echo 'Cloning the repo'
+        git(
+            branch: 'master',
+            url: 'https://github.com/ESE-Wahaj/wahaj-portfolio'
+        )
     }
- 
-    stage('Build') {
-      steps {
-        sh 'npm run build'
-      }
+
+    stage('Deploy to EC2'){
+        echo 'Deploying to EC2'
+        sh """
+            sudo mkdir -p ${appDir}
+            sudo chown -R jenkins:jenkins ${appDir}
+
+            rsync -av --delete --exclude='.git' --exclude='node_modules' ./ ${appDir}
+
+            cd ${appDir}
+            sudo npm install
+            sudo npm run build
+            sudo fuser -k 3000/tcp || true
+            npm run start
+        """
     }
- 
-    stage('Deploy') {
-      steps {
-        sh '''
-          sudo mkdir -p ${APP_DIR}
-          sudo rsync -av --delete .next/ ${APP_DIR}/.next/
-          sudo rsync -av --delete public/ ${APP_DIR}/public/
-          sudo cp package.json ${APP_DIR}/
-          sudo cp next.config.js ${APP_DIR}/ 2>/dev/null || true
-        '''
-      }
-    }
- 
-    stage('Restart App') {
-      steps {
-        sh 'sudo systemctl restart nextjs-app || true'
-      }
-    }
- 
-  }
- 
-  post {
-    success {
-      echo 'Deployment successful! App running on port 3000.'
-    }
-    failure {
-      echo 'Pipeline failed. Check logs above.'
-    }
-  }
 }
