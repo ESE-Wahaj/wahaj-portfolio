@@ -1,6 +1,11 @@
 node {
     def appDir = '/var/www/nextjs-app'
 
+    withEnv([
+        'NEXT_PUBLIC_SUPABASE_URL=https://gcwshxlqqlbrdycstgru.supabase.co',
+        'NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdjd3NoeGxxcWxicmR5Y3N0Z3J1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1ODk0MDUsImV4cCI6MjA5MDE2NTQwNX0.ZnwVQoVFCSp0YkKnvOWE-t6h99JFwpyzpkMi6wzsbe0'
+    ])
+
     stage('Clean Workspace'){
         echo 'Cleaning Jenkins Workspace'
         deleteDir()
