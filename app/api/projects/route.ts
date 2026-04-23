@@ -59,7 +59,17 @@ async function resolveProjectsTable(supabase: any) {
 
 export async function GET() {
   try {
-    const supabase = getSupabase();
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!url || !key) {
+      return NextResponse.json(
+        { error: `Missing env vars: URL=${!!url}, KEY=${!!key}` },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(url, key);
     const resolution = await resolveProjectsTable(supabase);
     if (resolution.error) {
       return NextResponse.json({ error: resolution.error }, { status: 500 });
@@ -76,7 +86,7 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to fetch projects' },
+      { error: error instanceof Error ? error.message : 'Failed to fetch projects', stack: error instanceof Error ? error.stack : undefined },
       { status: 500 }
     );
   }

@@ -26,6 +26,10 @@ const skillCategories: Record<string, { name: string; level: number }[]> = {
     { name: 'Git/GitHub', level: 90 },
     { name: 'Linux', level: 72 },
   ],
+  Mobile: [
+    { name: 'Flutter', level: 80 },
+    { name: 'Dart', level: 78 },
+  ],
   Tools: [
     { name: 'C++', level: 75 },
     { name: 'SQL', level: 80 },
@@ -79,7 +83,7 @@ const funFacts = [
   { emoji: '\u{1F30D}', fact: 'Dream: build tech that impacts millions of lives' },
 ];
 
-const learningNow = ['Supabase', 'AI/LLM', 'Flutter'];
+const learningNow = ['Supabase', 'AI/LLM', 'Cloud Deployment'];
 
 export default function AboutPage() {
   const [activeCategory, setActiveCategory] = useState('Frontend');
@@ -190,14 +194,15 @@ export default function AboutPage() {
               pixel-perfect UIs to designing robust APIs, every layer of the stack fascinates me.
             </p>
             <p>
-              Beyond web development, I&apos;ve developed a strong interest in machine learning and
+              Beyond web development, I also build cross-platform mobile applications with Flutter
+              and Dart. I&apos;ve also developed a strong interest in machine learning and
               artificial intelligence. Working with Python, Scikit-learn, and NLP has opened my eyes
               to the incredible potential of data-driven solutions. I love exploring how ML can be
-              woven into web applications to create smarter, more personalized experiences.
+              woven into web and mobile applications to create smarter, more personalized experiences.
             </p>
             <p>
               Today, I balance my studies with freelance projects, open-source contributions, and
-              continuous learning. My core stack revolves around React, Next.js, Python, and ML
+              continuous learning. My core stack revolves around React, Next.js, Flutter, Python, and ML
               tools. Whether it&apos;s a client project, a hackathon, or a personal experiment, I
               approach every challenge with the same energy and determination to build something
               meaningful.

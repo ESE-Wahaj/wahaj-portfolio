@@ -17,7 +17,8 @@ const skills = [
   { name: 'MongoDB', color: '#47A248', bg: '#0d2e0d', size: 75, delay: 1.0 },
   { name: 'Scikit', color: '#F7931E', bg: '#3a2800', size: 70, delay: 1.1 },
   { name: 'Figma', color: '#F24E1E', bg: '#3a1200', size: 70, delay: 1.2 },
-  { name: 'C++', color: '#00599C', bg: '#001a33', size: 72, delay: 1.3 },
+  { name: 'Flutter', color: '#02569B', bg: '#001a33', size: 90, delay: 1.3 },
+  { name: 'C++', color: '#00599C', bg: '#001a33', size: 72, delay: 1.4 },
 ];
 
 const floatVariants = [

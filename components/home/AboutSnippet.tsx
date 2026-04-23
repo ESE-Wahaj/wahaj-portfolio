@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const skills = ['React', 'Next.js', 'TypeScript', 'Python', 'Node.js', 'Tailwind'];
+const skills = ['React', 'Next.js', 'TypeScript', 'Flutter', 'Python', 'Node.js', 'Tailwind'];
 
 export default function AboutSnippet() {
   return (
@@ -67,10 +67,11 @@ export default function AboutSnippet() {
             }}
           >
             From crafting responsive front-end interfaces with React and Next.js to
-            designing robust back-end systems with Node.js and Python, I thrive on
-            learning new technologies and pushing the boundaries of what&apos;s possible.
-            My goal is to merge software engineering best practices with cutting-edge
-            ML techniques to create truly intelligent applications.
+            building cross-platform mobile apps with Flutter and designing robust back-end
+            systems with Node.js and Python, I thrive on learning new technologies and
+            pushing the boundaries of what&apos;s possible. My goal is to merge software
+            engineering best practices with cutting-edge ML techniques to create truly
+            intelligent applications.
           </motion.p>
 
           <motion.div

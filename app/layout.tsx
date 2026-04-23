@@ -4,17 +4,19 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "M. Wahaj Naveed | Software Engineer & Full-Stack Developer",
+    default: "M. Wahaj Naveed | Software Engineer, Full-Stack & Flutter Developer",
     template: "%s | M. Wahaj Naveed",
   },
   description:
-    "Portfolio of M. Wahaj Naveed — Software Engineering student, Full-Stack Developer, and ML enthusiast. Based in Pakistan.",
+    "Portfolio of M. Wahaj Naveed — Software Engineering student, Full-Stack & Flutter Developer, and ML enthusiast. Based in Pakistan.",
   keywords: [
     "Wahaj Naveed",
     "Software Engineer",
     "Full-Stack Developer",
+    "Flutter Developer",
     "React",
     "Next.js",
+    "Dart",
     "Pakistan",
   ],
   authors: [{ name: "M. Wahaj Naveed" }],
@@ -23,15 +25,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://wahajnaveed.vercel.app",
     siteName: "M. Wahaj Naveed",
-    title: "M. Wahaj Naveed | Software Engineer & Full-Stack Developer",
+    title: "M. Wahaj Naveed | Software Engineer, Full-Stack & Flutter Developer",
     description:
-      "Portfolio of M. Wahaj Naveed — Software Engineering student, Full-Stack Developer, and ML enthusiast.",
+      "Portfolio of M. Wahaj Naveed — Software Engineering student, Full-Stack & Flutter Developer, and ML enthusiast.",
   },
   twitter: {
     card: "summary_large_image",
     title: "M. Wahaj Naveed | Software Engineer",
     description:
-      "Full-Stack Developer & ML Enthusiast. Building production-grade web applications.",
+      "Full-Stack & Flutter Developer. Building production-grade web and mobile applications.",
   },
 };
 

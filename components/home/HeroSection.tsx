@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 const roles = [
   'Full-Stack Developer',
+  'Flutter Developer',
   'ML Enthusiast',
   'Problem Solver',
   'React Developer',
@@ -118,8 +119,8 @@ export default function HeroSection() {
               style={{ maxWidth: 520, marginBottom: '2.5rem', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--text-200)' }}
             >
               Software Engineering student at <span style={{ color: 'var(--gold)' }}>COMSATS University</span> building
-              production-grade web applications. Passionate about turning complex ideas into clean,
-              scalable solutions with <span style={{ color: 'var(--coral)' }}>React, Next.js</span>, and Python.
+              production-grade web and mobile applications. Passionate about turning complex ideas into clean,
+              scalable solutions with <span style={{ color: 'var(--coral)' }}>React, Next.js, Flutter</span>, and Python.
             </motion.p>
 
             <motion.div

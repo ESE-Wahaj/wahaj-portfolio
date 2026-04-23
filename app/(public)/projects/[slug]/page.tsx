@@ -17,6 +17,7 @@ type Project = {
   github_url?: string;
   live_url?: string;
   thumbnail_url?: string;
+  screenshots?: string[];
 };
 
 function statusLabel(status?: string) {
@@ -96,6 +97,42 @@ export default function ProjectDetailPage() {
             {project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer" className="btn btn-outline">GitHub</a>}
             {project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" className="btn btn-teal">Live Demo</a>}
           </div>
+
+          {project.screenshots && project.screenshots.length > 0 && (
+            <div style={{ marginTop: '2.5rem' }}>
+              <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-heading)', marginBottom: '1.2rem' }}>Screenshots</h2>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                gap: '1rem',
+              }}>
+                {project.screenshots.map((src, i) => (
+                  <motion.div
+                    key={src}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    style={{
+                      position: 'relative',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      border: '1px solid var(--border)',
+                      aspectRatio: '9/16',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${project.title} screenshot ${i + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 250px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
         </motion.div>
 
         {relatedProjects.length > 0 && (
