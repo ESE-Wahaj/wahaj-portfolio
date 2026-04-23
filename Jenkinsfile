@@ -1,8 +1,6 @@
 node {
     def appDir = '/var/www/nextjs-app'
 
-    
-
     stage('Clean Workspace'){
         echo 'Cleaning Jenkins Workspace'
         deleteDir()
@@ -18,21 +16,29 @@ node {
 
     stage('Deploy to EC2'){
         echo 'Deploying to EC2'
+
         withEnv([
-        'NEXT_PUBLIC_SUPABASE_URL=https://gcwshxlqqlbrdycstgru.supabase.co',
-        'NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdjd3NoeGxxcWxicmR5Y3N0Z3J1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1ODk0MDUsImV4cCI6MjA5MDE2NTQwNX0.ZnwVQoVFCSp0YkKnvOWE-t6h99JFwpyzpkMi6wzsbe0'
-        ])
-        sh """
-            sudo mkdir -p ${appDir}
-            sudo chown -R jenkins:jenkins ${appDir}
+            'NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co',
+            'NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key'
+        ]) {
 
-            rsync -av --delete --exclude='.git' --exclude='node_modules' ./ ${appDir}
+            sh """
+                sudo mkdir -p ${appDir}
+                sudo chown -R jenkins:jenkins ${appDir}
 
-            cd ${appDir}
-            sudo npm install
-            sudo npm run build
-            sudo fuser -k 3000/tcp || true
-            npm run start
-        """
+                rsync -av --delete --exclude='.git' --exclude='node_modules' ./ ${appDir}
+
+                cd ${appDir}
+
+                echo "Checking env vars..."
+                env | grep SUPABASE
+
+                sudo npm install
+                sudo npm run build
+
+                sudo fuser -k 3000/tcp || true
+                npm run start
+            """
+        }
     }
 }
